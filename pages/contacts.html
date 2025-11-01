@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+
+<body class="page-container">
+    <header class="header">
+        <img class="logo" src="../images/logo.webp" alt="логотип">
+        <h1 class="StudentName">Ашхотов Мурат Иналович</h1>
+        <nav aria-label="Основное меню">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link" href="../index.html">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="projects.html">Проекты</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="diary.html">Дневник</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="contacts.html" aria-current="page">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section class="contacts-page">
+            <h1>Свяжитесь со мной</h1>
+
+            <div class="contact-form">
+                <form class="form">
+                    <div class="form-group">
+                        <label for="name">Имя:</label>
+                        <input type="text" id="name" name="name" placeholder="Введите ваше имя">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Введите ваш email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Сообщение:</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Введите ваше сообщение"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" aria-label="Отправить сообщение">Отправить сообщение</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <h2>Контакты:</h2>
+                <div class="contact-details">
+                    <p>📧 ashkhotov.m@gmail.com</p>
+                    <p>📱 GitHub: ashkhotov06</p>
+                    <p>📍 Нальчик, Россия</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Ашхотов М.И. Все права защищены</p>
+        </div>
+    </footer>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/filters.js"></script>
+    <script src="../scripts/form-validation.js"></script>
+    <script src="../scripts/modal.js"></script>
+</body>
+
+</html>

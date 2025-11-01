@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проекты</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+
+<body class="page-container">
+    <header class="header">
+       <img class="logo" src="../images/logo.webp" alt="логотип">
+        <h1 class="StudentName">Ашхотов Мурат Иналович</h1>
+        <nav aria-label="Основное меню">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link" href="../index.html">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="projects.html" aria-current="page">Проекты</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="diary.html">Дневник</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="contacts.html">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section class="projects-page">
+            <div class="projects-header">
+                <h2>Мои проекты</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn" aria-label="Все проекты">Все</button>
+                    <button class="filter-btn" aria-label="HTML проекты">HTML</button>
+                    <button class="filter-btn" aria-label="Java Script проекты">JS</button>
+                    <button class="filter-btn" aria-label="React проекты">React</button>
+                </div>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Личный сайт</h3>
+                        <p>HTML, CSS</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Todo-приложение</h3>
+                        <p>JavaScript</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Интернет-магазин</h3>
+                        <p>React</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Портфолио</h3>
+                        <p>Bootstrap</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Ашхотов М.И. Все права защищены</p>
+        </div>
+    </footer>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/filters.js"></script>
+    <script src="../scripts/form-validation.js"></script>
+    <script src="../scripts/modal.js"></script>
+</body>
+
+</html>

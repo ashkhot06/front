@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дневник</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+
+<body class="page-container">
+    <header class="header">
+        <img class="logo" src="../images/logo.webp" alt="логотип">
+        <h1 class="StudentName">Ашхотов Мурат Иналович</h1>
+        <nav aria-label="Основное меню">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link" href="../index.html">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="projects.html">Проекты</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="diary.html" aria-current="page">Дневник</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="contacts.html">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section class="diary-page">
+            <h1>Мой учебный прогресс</h1>
+
+            <div class="progress-list">
+                <div class="progress-item">
+                    <span class="date">15 дек - </span>
+                    <span class="task">Верстка макета сайта ✓</span>
+                </div>
+                <div class="progress-item">
+                    <span class="date">10 дек - </span>
+                    <span class="task">JavaScript основы ✓</span>
+                </div>
+                <div class="progress-item">
+                    <span class="date">05 дек - </span>
+                    <span class="task">Работа с формами ⏳</span>
+                </div>
+                <div class="progress-item">
+                    <span class="date">01 дек - </span>
+                    <span class="task">Адаптивный дизайн ⏳</span>
+                </div>
+            </div>
+
+            <div class="current-courses">
+                <h2>Текущие курсы</h2>
+                <div class="course-progress">
+                    <div class="course-item">
+                        <span class="course-name">Веб-разработка</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                        <span class="progress-percent">90%</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-name">JavaScript</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 70%"></div>
+                        </div>
+                        <span class="progress-percent">70%</span>
+                    </div>
+                    <div class="course-item">
+                        <span class="course-name">React</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 50%"></div>
+                        </div>
+                        <span class="progress-percent">50%</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="add-entry-btn" aria-label="Добавить новую запись">Добавить запись</button>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Ашхотов М.И. Все права защищены</p>
+        </div>
+    </footer>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/filters.js"></script>
+    <script src="../scripts/form-validation.js"></script>
+    <script src="../scripts/modal.js"></script>
+</body>
+
+</html>

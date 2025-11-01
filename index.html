@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewportfit=cover">
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Главная страница</title>
+</head>
+
+<body>
+    <header class="header">
+        <img class="logo" src="images/logo.webp" alt="логотип">
+        <h1 class="StudentName">Ашхотов Мурат Иналович</h1>
+        <nav aria-label="Основное меню" id="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="#home" class="nav__link active" aria-current="page">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="pages/projects.html">Проекты</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="pages/diary.html">Дневник</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="pages/contacts.html">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+        <a class="skip-link" href="#nav" aria-label="Перемещение в главное меню">M</a>
+    </header>
+    <main class="content">
+        <section class="profile">
+            <img class="profile_photo" src="images/logo.png" alt="фото профиля">
+            <p class="about-text">Привет! Я студент
+                Факультет ИПТИП, группа ЭФБО-05-24
+                Увлекаюсь веб-разработкой
+            </p>
+            <a href="assets/resume.pdf" class="download-btn" download aria-label="Скачивание резюме">
+                📄 Скачать резюме (PDF)
+            </a>
+        </section>
+        <section class="skills">
+            <h2 class="section-title">Мои навыки</h2>
+            <div class="skills-progress">
+                <div class="skill-item">
+                    <span class="skill-name">HTML/CSS</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%"></div>
+                    </div>
+                    <span class="progress-percent">90%</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">JavaScript</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 80%"></div>
+                    </div>
+                    <span class="progress-percent">80%</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Bootstrap</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                    <span class="progress-percent">85%</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">React</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%"></div>
+                    </div>
+                    <span class="progress-percent">60%</span>
+                </div>
+            </div>
+        </section>
+        <section class="projects">
+            <h2 class="section-title">Лучшие проекты</h2>
+            <div class="project-list">
+                <p class="project">Проект 1</p>
+                <p class="project">Проект 2</p>
+                <p class="project">проект 3</p>
+            </div>
+        </section>
+
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Ашхотов М.И. Все права защищены</p>
+        </div>
+    </footer>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/filters.js"></script>
+    <script src="scripts/form-validation.js"></script>
+    <script src="scripts/modal.js"></script>
+</body>
+
+</html>
