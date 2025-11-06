@@ -6,6 +6,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Проекты</title>
     <link rel="stylesheet" href="../styles/styles.css">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .close:hover {
+            color: #667eea;
+        }
+
+        .project-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .project-description {
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .project-tech {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+
+        .projects-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            flex: 1;
+            min-width: 280px;
+            max-width: 320px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            background: #f8f9fa;
+            border: 1px solid #667eea;
+            color: #667eea;
+            padding: 6px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+    </style>
 </head>
 
 <body class="page-container">
@@ -35,51 +149,232 @@
             <div class="projects-header">
                 <h2>Мои проекты</h2>
                 <div class="filter-buttons">
-                    <button class="filter-btn" aria-label="Все проекты">Все</button>
-                    <button class="filter-btn" aria-label="HTML проекты">HTML</button>
-                    <button class="filter-btn" aria-label="Java Script проекты">JS</button>
-                    <button class="filter-btn" aria-label="React проекты">React</button>
+                    <button class="filter-btn active" onclick="filterProjects('all')">Все</button>
+                    <button class="filter-btn" onclick="filterProjects('html')">HTML/CSS</button>
+                    <button class="filter-btn" onclick="filterProjects('js')">JavaScript</button>
+                    <button class="filter-btn" onclick="filterProjects('bootstrap')">Bootstrap</button>
                 </div>
             </div>
 
             <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>Личный сайт</h3>
-                        <p>HTML, CSS</p>
+                <!-- Проект 1 -->
+                <div class="project-card" data-tech="html css" onclick="openModal('project1-modal')">
+                    <h3 class="project-title">Сайт-визитка</h3>
+                    <p class="project-description">Простой адаптивный сайт-визитка с информацией о себе и контактами</p>
+                    <div>
+                        <span class="project-tech">HTML</span>
+                        <span class="project-tech">CSS</span>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>Todo-приложение</h3>
-                        <p>JavaScript</p>
+
+                <!-- Проект 2 -->
+                <div class="project-card" data-tech="html css js" onclick="openModal('project2-modal')">
+                    <h3 class="project-title">Галерея изображений</h3>
+                    <p class="project-description">Интерактивная галерея с фильтрацией и просмотром в полный размер</p>
+                    <div>
+                        <span class="project-tech">HTML</span>
+                        <span class="project-tech">CSS</span>
+                        <span class="project-tech">JavaScript</span>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>Интернет-магазин</h3>
-                        <p>React</p>
+
+                <!-- Проект 3 -->
+                <div class="project-card" data-tech="html css js" onclick="openModal('project3-modal')">
+                    <h3 class="project-title">Калькулятор</h3>
+                    <p class="project-description">Простой калькулятор с основными математическими операциями</p>
+                    <div>
+                        <span class="project-tech">HTML</span>
+                        <span class="project-tech">CSS</span>
+                        <span class="project-tech">JavaScript</span>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>Портфолио</h3>
-                        <p>Bootstrap</p>
+
+                <!-- Проект 4 -->
+                <div class="project-card" data-tech="html css bootstrap" onclick="openModal('project4-modal')">
+                    <h3 class="project-title">Адаптивный лендинг</h3>
+                    <p class="project-description">Лендинг страница для продукта с использованием Bootstrap</p>
+                    <div>
+                        <span class="project-tech">HTML</span>
+                        <span class="project-tech">CSS</span>
+                        <span class="project-tech">Bootstrap</span>
+                    </div>
+                </div>
+
+                <!-- Проект 5 -->
+                <div class="project-card" data-tech="html css js" onclick="openModal('project5-modal')">
+                    <h3 class="project-title">To-Do список</h3>
+                    <p class="project-description">Простое приложение для управления задачами</p>
+                    <div>
+                        <span class="project-tech">HTML</span>
+                        <span class="project-tech">CSS</span>
+                        <span class="project-tech">JavaScript</span>
+                    </div>
+                </div>
+
+                <!-- Проект 6 -->
+                <div class="project-card" data-tech="html css" onclick="openModal('project6-modal')">
+                    <h3 class="project-title">Блог-страница</h3>
+                    <p class="project-description">Простая страница блога с статьями и комментариями</p>
+                    <div>
+                        <span class="project-tech">HTML</span>
+                        <span class="project-tech">CSS</span>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- Модальные окна для проектов -->
+    <div id="project1-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project1-modal')">&times;</span>
+            <h2>Сайт-визитка</h2>
+            <p><strong>Описание:</strong> Простой адаптивный сайт-визитка с информацией о себе, навыками и контактными данными.</p>
+            <p><strong>Технологии:</strong> HTML, CSS</p>
+            <p><strong>Особенности:</strong></p>
+            <ul>
+                <li>Адаптивный дизайн для мобильных устройств</li>
+                <li>Чистый и минималистичный интерфейс</li>
+                <li>Секция с контактной информацией</li>
+                <li>Простая навигация</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="project2-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project2-modal')">&times;</span>
+            <h2>Галерея изображений</h2>
+            <p><strong>Описание:</strong> Интерактивная галерея изображений с возможностью фильтрации по категориям и просмотром в полном размере.</p>
+            <p><strong>Технологии:</strong> HTML, CSS, JavaScript</p>
+            <p><strong>Функциональность:</strong></p>
+            <ul>
+                <li>Фильтрация изображений по категориям</li>
+                <li>Просмотр изображений в модальном окне</li>
+                <li>Адаптивная сетка изображений</li>
+                <li>Плавные анимации</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="project3-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project3-modal')">&times;</span>
+            <h2>Калькулятор</h2>
+            <p><strong>Описание:</strong> Простой калькулятор с основными математическими операциями.</p>
+            <p><strong>Технологии:</strong> HTML, CSS, JavaScript</p>
+            <p><strong>Возможности:</strong></p>
+            <ul>
+                <li>Сложение, вычитание, умножение, деление</li>
+                <li>Красивый и интуитивный интерфейс</li>
+                <li>Обработка ошибок (деление на ноль)</li>
+                <li>Очистка и удаление последнего символа</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Остальные модальные окна... -->
+    <div id="project4-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project4-modal')">&times;</span>
+            <h2>Адаптивный лендинг</h2>
+            <p><strong>Описание:</strong> Лендинг страница для продукта с использованием Bootstrap.</p>
+            <p><strong>Технологии:</strong> HTML, CSS, Bootstrap</p>
+            <p><strong>Особенности:</strong></p>
+            <ul>
+                <li>Полностью адаптивный дизайн</li>
+                <li>Использование Bootstrap компонентов</li>
+                <li>Современный и чистый дизайн</li>
+                <li>Оптимизирован для мобильных устройств</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="project5-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project5-modal')">&times;</span>
+            <h2>To-Do список</h2>
+            <p><strong>Описание:</strong> Простое приложение для управления задачами.</p>
+            <p><strong>Технологии:</strong> HTML, CSS, JavaScript</p>
+            <p><strong>Функции:</strong></p>
+            <ul>
+                <li>Добавление новых задач</li>
+                <li>Отметка выполненных задач</li>
+                <li>Удаление задач</li>
+                <li>Фильтрация задач</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="project6-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project6-modal')">&times;</span>
+            <h2>Блог-страница</h2>
+            <p><strong>Описание:</strong> Простая страница блога с статьями и комментариями.</p>
+            <p><strong>Технологии:</strong> HTML, CSS</p>
+            <p><strong>Структура:</strong></p>
+            <ul>
+                <li>Главная страница со списком статей</li>
+                <li>Страницы отдельных статей</li>
+                <li>Секция комментариев</li>
+                <li>Боковая панель с категориями</li>
+            </ul>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="footer-content">
             <p>© 2025 Ашхотов М.И. Все права защищены</p>
         </div>
     </footer>
-    <script src="../scripts/main.js"></script>
-    <script src="../scripts/filters.js"></script>
-    <script src="../scripts/form-validation.js"></script>
-    <script src="../scripts/modal.js"></script>
+
+    <script>
+        // Функции для модальных окон
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Функция фильтрации проектов
+        function filterProjects(tech) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const projects = document.querySelectorAll('.project-card');
+            
+            projects.forEach(project => {
+                if (tech === 'all' || project.dataset.tech.includes(tech)) {
+                    project.style.display = 'block';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
+
+        // Закрытие модального окна при клике вне его
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = 'none';
+                }
+            }
+        }
+
+        // Закрытие по ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.getElementsByClassName('modal');
+                for (let i = 0; i < modals.length; i++) {
+                    modals[i].style.display = 'none';
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>

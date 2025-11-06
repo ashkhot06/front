@@ -1,12 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewportfit=cover">
-    <link rel="stylesheet" href="styles/styles.css">
     <title>Главная страница</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .close:hover {
+            color: #667eea;
+        }
+
+        .project {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 15px;
+            margin: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .project:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .project-description {
+            color: #666;
+            line-height: 1.4;
+            font-size: 0.9rem;
+        }
+
+        .project-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .project {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+        }
+    </style>
 </head>
 
 <body>
@@ -78,9 +157,23 @@
         <section class="projects">
             <h2 class="section-title">Лучшие проекты</h2>
             <div class="project-list">
-                <p class="project">Проект 1</p>
-                <p class="project">Проект 2</p>
-                <p class="project">проект 3</p>
+                <!-- Проект 1 -->
+                <div class="project" onclick="openModal('modal1')">
+                    <h3 class="project-title">Сайт-визитка</h3>
+                    <p class="project-description">Простой адаптивный сайт-визитка с информацией о себе и контактами</p>
+                </div>
+
+                <!-- Проект 2 -->
+                <div class="project" onclick="openModal('modal2')">
+                    <h3 class="project-title">Галерея изображений</h3>
+                    <p class="project-description">Интерактивная галерея с фильтрацией и просмотром в полный размер</p>
+                </div>
+
+                <!-- Проект 3 -->
+                <div class="project" onclick="openModal('modal3')">
+                    <h3 class="project-title">Калькулятор</h3>
+                    <p class="project-description">Простой калькулятор с основными математическими операциями</p>
+                </div>
             </div>
         </section>
 
@@ -90,10 +183,86 @@
             <p>© 2025 Ашхотов М.И. Все права защищены</p>
         </div>
     </footer>
-    <script src="scripts/main.js"></script>
-    <script src="scripts/filters.js"></script>
-    <script src="scripts/form-validation.js"></script>
-    <script src="scripts/modal.js"></script>
+
+    <!-- Модальные окна -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Сайт-визитка</h2>
+            <p><strong>Описание:</strong> Простой адаптивный сайт-визитка с информацией о себе, навыками и контактными данными.</p>
+            <p><strong>Технологии:</strong> HTML, CSS, JavaScript</p>
+            <p><strong>Особенности:</strong></p>
+            <ul>
+                <li>Адаптивный дизайн</li>
+                <li>Чистый и минималистичный интерфейс</li>
+                <li>Контактная форма</li>
+            </ul>
+            <button onclick="window.location.href='pages/projects.html#project1'" style="background:#667eea; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; margin-top:15px;">Подробнее на странице проектов</button>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>Галерея изображений</h2>
+            <p><strong>Описание:</strong> Интерактивная галерея изображений с возможностью фильтрации по категориям и просмотром в полном размере.</p>
+            <p><strong>Технологии:</strong> HTML, CSS, JavaScript</p>
+            <p><strong>Функциональность:</strong></p>
+            <ul>
+                <li>Фильтрация изображений</li>
+                <li>Просмотр в модальном окне</li>
+                <li>Адаптивная сетка</li>
+            </ul>
+            <button onclick="window.location.href='pages/projects.html#project2'" style="background:#667eea; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; margin-top:15px;">Подробнее на странице проектов</button>
+        </div>
+    </div>
+
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2>Калькулятор</h2>
+            <p><strong>Описание:</strong> Простой калькулятор с основными математическими операциями: сложение, вычитание, умножение, деление.</p>
+            <p><strong>Технологии:</strong> HTML, CSS, JavaScript</p>
+            <p><strong>Возможности:</strong></p>
+            <ul>
+                <li>Основные математические операции</li>
+                <li>Красивый интерфейс</li>
+                <li>Обработка ошибок</li>
+            </ul>
+            <button onclick="window.location.href='pages/projects.html#project3'" style="background:#667eea; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; margin-top:15px;">Подробнее на странице проектов</button>
+        </div>
+    </div>
+
+    <script>
+        // Функции для модальных окон
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Закрытие модального окна при клике вне его
+        window.onclick = function(event) {
+            var modals = document.getElementsByClassName('modal');
+            for (var i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = 'none';
+                }
+            }
+        }
+
+        // Закрытие по ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                var modals = document.getElementsByClassName('modal');
+                for (var i = 0; i < modals.length; i++) {
+                    modals[i].style.display = 'none';
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
