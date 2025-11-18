@@ -1,688 +1,598 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="ru">
 
-html {
-    scroll-behavior: smooth;
-}
-
-:root {
-    color-scheme: light dark;
-}
-
-html,
-body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sansserif;
-    background: #f8fafc;
-    color: #0b1020;
-}
-
-.page {
-    min-height: 100vh;
-    /* фолбэк для старых браузеров (может не учитывать
-панели на мобилках) */
-    min-height: 100svh;
-    /* стабильный минимум: высота экрана с панелями
-(всегда влезет) */
-    min-height: 100dvh;
-    /* на новых браузерах — актуальная видимая высота,
-обновляется при скролле */
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    flex: 1;
-    padding-inline: clamp(.75rem, .5rem + 1vw, 2rem);
-}
-
-.logo {
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 2rem;
-    object-fit: cover;
-    object-position: center;
-}
-
-.header {
-    background-color: #2c3e50;
-    color: white;
-    padding: 1.5rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.header p:first-child {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ecf0f1;
-}
-
-.StudentName {
-    font-size: 24px;
-    text-align: center;
-    color: #ecf0f1;
-}
-
-.skip-link {
-    position: fixed;
-    bottom: 2rem;
-    right: 0.5rem;
-    top: auto;
-    z-index: 10000;
-    padding: .5rem .75rem;
-    background: black;
-    color: #ecf0f1;
-    border-radius: 50%;
-    text-decoration: none;
-    inset-inline-start: auto;
-    inset-block-start: auto;
-}
-
-.nav__link.active {
-    color: #007bff;
-    font-weight: bold;
-    border-bottom: 2px solid #007bff;
-}
-
-.nav__link[aria-current="page"] {
-    color: #007bff;
-    font-weight: bold;
-    border-bottom: 2px solid #007bff;
-}
-
-.skip-link:focus,
-.skip-link:focus-visible {
-    top: auto;
-    bottom: 2rem;
-}
-
-:focus-visible {
-    outline: 3px solid #2563eb;
-    outline-offset: 2px;
-}
-
-
-button,
-input,
-textarea {
-    outline-offset: 2px;
-}
-
-.nav {
-    position: sticky;
-    top: 0;
-    /* Прибавки для вырезов/жестовых панелей — только где они есть */
-    padding-block-start: calc(.75rem + env(safe-area-inset-top));
-    padding-block-end: .75rem;
-    padding-inline-start: calc(var(--space-md, 1rem) + env(safe-area-insetleft));
-    padding-inline-end: calc(var(--space-md, 1rem) + env(safe-area-insetright));
-    color: #fff;
-    z-index: 100;
-    isolation: isolate;
-}
-
-.nav__list {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-}
-
-.nav__link {
-    color: #ecf0f1;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.nav__link:hover {
-    background-color: #34495e;
-}
-
-.content {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem;
-    justify-content: center;
-    min-height: 85vh;
-}
-
-.profile {
-    display: grid;
-    grid-template-columns: 150px 1fr;
-    gap: 2rem;
-    align-items: center;
-    padding: 2rem;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
-}
-
-.profile_photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 2rem;
-    object-fit: cover;
-    object-position: center;
-}
-
-.about-text {
-    font-size: 24px;
-    line-height: 1.8;
-    margin-bottom: 1rem;
-    color: #555;
-}
-
-.download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: black;
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    width: 150px;
-    height: 90px;
-    font-size: 15px;
-}
-
-.download-btn:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.skills {
-    padding: 2rem;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
-}
-
-.section-title {
-    font-size: clamp(1.5rem, 1.1rem + 2vw, 2rem);
-    margin-bottom: 1.5rem;
-    text-align: center;
-    color: #2c3e50;
-}
-
-.skills-progress {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.skill-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background-color: #f8f9fa;
-    border-radius: 4px;
-}
-
-.skill-name {
-    flex: 1;
-    font-weight: 500;
-    color: #2c3e50;
-}
-
-.progress-bar {
-    flex: 2;
-    height: 8px;
-    background-color: #ecf0f1;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    border-radius: 4px;
-    transition: width 0.5s ease;
-}
-
-.progress-percent {
-    flex: 0 0 50px;
-    text-align: right;
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-.projects {
-    padding: 2rem;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
-}
-
-.project-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-    gap: var(--space-lg, 1.5rem);
-}
-
-/* Прогрессивное улучшение: только если CQ поддерживаются */
-@supports (container-type: inline-size) {
-    .projects {
-        /* Делаем область контейнером для CQ */
-        container-type: inline-size;
-        /* реагируем на ширину
-(inline) */
-        container-name: projects;
-        /* по имени удобнее
-таргетировать */
-    }
-
-    /* Когда КОНТЕЙНЕР шире 640px — 2 колонки */
-    @container projects (min-width: 640px) {
-        .projects-list {
-            grid-template-columns: repeat(2, 1fr);
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проекты</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
         }
-    }
 
-    /* Когда шире 960px — 3 колонки */
-    @container projects (min-width: 960px) {
-        .projects-list {
-            grid-template-columns: repeat(3, 1fr);
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
         }
-    }
-}
 
-.project {
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    color: white;
-    padding: 2rem 1rem;
-    text-align: center;
-    font-weight: 500;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    border-radius: 6px;
-    min-height: 100px;
-    min-width: 0;
-}
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
 
-.project:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+        .close:hover {
+            color: #667eea;
+        }
 
-.footer {
-    background-color: #2c3e50;
-    color: white;
-    text-align: center;
-    padding: 1.5rem;
-    margin-top: auto;
-    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
-}
+        .project-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 0;
+            margin: 10px;
+            border: 1px solid #ddd;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
 
-.footer-content p {
-    margin: 0;
-    color: #bdc3c7;
-}
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
 
-@media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
+        .project-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
 
-    .nav__list {
-        gap: 1rem;
-        flex-direction: column;
-        font-size: 24px;
-    }
+        .project-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .profile {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
 
-    .profile_photo {
-        margin: 0 auto;
-    }
+        .project-description {
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
 
-    .skills-list,
-    .project-list {
-        grid-template-columns: 1fr;
-    }
-}
+        .project-tech {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
 
-.projects-header {
-    display: flex;
-    gap: 10rem;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+            padding: 0 20px;
+        }
 
-.filter-buttons {
-    display: inline-flex;
-    gap: 0.5rem;
-}
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            justify-content: center;
+        }
 
-.filter-btn {
-    background-color: #34495e;
-    border-radius: 5px;
-    font-size: 18px;
-    color: #ecf0f1;
-    min-width: 70px;
-    cursor: pointer;
-}
+        .filter-btn {
+            background: #f8f9fa;
+            border: 1px solid #667eea;
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
 
-.filter-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
-}
+        .filter-btn:hover, .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
 
+        /* Галерея в модальном окне */
+        .gallery-container {
+            margin: 20px 0;
+        }
 
-.projects-grid {
-    display: grid;
-    /* включаем CSS Grid */
-    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-    gap: var(--space-lg, 1.5rem);
-    justify-content: center;
-}
+        .main-gallery-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+        }
 
-.project-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    text-align: center;
-    font-weight: 500;
-    border-radius: 4px;
-    transition: transform 0.2s ease;
-    color: #f8f9fa;
-    background-color: #34495e;
-    min-height: 400px;
-}
+        .gallery-thumbnails {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-.project-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+        .gallery-thumbnail {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
 
-.projects-page {
-    margin: 0 auto;
-    width: 1000px;
-    justify-content: center;
-}
+        .gallery-thumbnail:hover,
+        .gallery-thumbnail.active {
+            border-color: #667eea;
+            transform: scale(1.05);
+        }
 
-.diary-page {
-    margin: 0 auto;
-    width: 1000px;
+        .project-details {
+            margin-top: 20px;
+        }
 
-}
+        .project-features {
+            margin: 15px 0;
+        }
 
-.progress-list {
-    border-radius: 4px;
-    background-color: #34495e;
-    color: #f8f9fa;
-    padding: 1rem;
-}
+        .project-features ul {
+            padding-left: 20px;
+        }
 
-.progress-item {
-    text-align: left;
-    display: block;
-    padding: 0.8rem 1rem;
-    font-weight: bold;
-}
+        .project-features li {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
 
-.diary-page h1,
-.diary-page h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
+        .projects-header {
+            text-align: center;
+            padding: 0 20px;
+        }
 
-.contacts-page {
-    width: 1000px;
-    margin: 0 auto;
-    padding: 2rem;
-}
+        .projects-header h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+    </style>
+</head>
 
-.contacts-page h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #2c3e50;
-}
+<body class="page-container">
+    <header class="header">
+       <img class="logo" src="../images/logo.webp" alt="логотип">
+        <h1 class="StudentName">Ашхотов Мурат Иналович</h1>
+        <nav aria-label="Основное меню">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link" href="../index.html">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="projects.html" aria-current="page">Проекты</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="diary.html">Дневник</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="contacts.html">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-.contact-form {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
-}
+    <main class="content">
+        <section class="projects-page">
+            <div class="projects-header">
+                <h2>Мои проекты</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" onclick="filterProjects('all')">Все</button>
+                    <button class="filter-btn" onclick="filterProjects('html')">HTML/CSS</button>
+                    <button class="filter-btn" onclick="filterProjects('js')">JavaScript</button>
+                    <button class="filter-btn" onclick="filterProjects('bootstrap')">Bootstrap</button>
+                </div>
+            </div>
 
-.form-group {
-    margin-bottom: 1.5rem;
-}
+            <div class="projects-grid">
+                <!-- Проект 1 -->
+                <div class="project-card" data-tech="html css" onclick="openProjectModal('project1')">
+                    <img src="../images/business card website.jpg" alt="Сайт-визитка" class="project-image" onerror="this.src='https://via.placeholder.com/400x200/667eea/white?text=Сайт-визитка'">
+                    <div class="project-content">
+                        <h3 class="project-title">Сайт-визитка</h3>
+                        <p class="project-description">Простой адаптивный сайт-визитка с информацией о себе и контактами</p>
+                        <div>
+                            <span class="project-tech">HTML</span>
+                            <span class="project-tech">CSS</span>
+                        </div>
+                    </div>
+                </div>
 
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: #2c3e50;
-}
+                <!-- Проект 2 -->
+                <div class="project-card" data-tech="html css js" onclick="openProjectModal('project2')">
+                    <img src="../images/gallery.jpg" alt="Галерея изображений" class="project-image" onerror="this.src='https://via.placeholder.com/400x200/764ba2/white?text=Галерея'">
+                    <div class="project-content">
+                        <h3 class="project-title">Галерея изображений</h3>
+                        <p class="project-description">Интерактивная галерея с фильтрацией и просмотром в полный размер</p>
+                        <div>
+                            <span class="project-tech">HTML</span>
+                            <span class="project-tech">CSS</span>
+                            <span class="project-tech">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #bdc3c7;
-    border-radius: 4px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-}
+                <!-- Проект 3 -->
+                <div class="project-card" data-tech="html css js" onclick="openProjectModal('project3')">
+                    <img src="../images/calculator.jpg" alt="Калькулятор" class="project-image" onerror="this.src='https://via.placeholder.com/400x200/f093fb/white?text=Калькулятор'">
+                    <div class="project-content">
+                        <h3 class="project-title">Калькулятор</h3>
+                        <p class="project-description">Простой калькулятор с основными математическими операциями</p>
+                        <div>
+                            <span class="project-tech">HTML</span>
+                            <span class="project-tech">CSS</span>
+                            <span class="project-tech">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
 
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
-}
+                <!-- Проект 4 -->
+                <div class="project-card" data-tech="html css bootstrap" onclick="openProjectModal('project4')">
+                    <img src="../images/adaptive landing page.jpg" alt="Адаптивный лендинг" class="project-image" onerror="this.src='https://via.placeholder.com/400x200/4facfe/white?text=Лендинг'">
+                    <div class="project-content">
+                        <h3 class="project-title">Адаптивный лендинг</h3>
+                        <p class="project-description">Лендинг страница для продукта с использованием Bootstrap</p>
+                        <div>
+                            <span class="project-tech">HTML</span>
+                            <span class="project-tech">CSS</span>
+                            <span class="project-tech">Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
 
-.submit-btn {
-    background-color: #3498db;
-    color: white;
-    padding: 0.8rem 2rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-}
+                <!-- Проект 5 -->
+                <div class="project-card" data-tech="html css js" onclick="openProjectModal('project5')">
+                    <img src="../images/to-do list.jpg" alt="To-Do список" class="project-image" onerror="this.src='https://via.placeholder.com/400x200/43e97b/white?text=To-Do'">
+                    <div class="project-content">
+                        <h3 class="project-title">To-Do список</h3>
+                        <p class="project-description">Простое приложение для управления задачами</p>
+                        <div>
+                            <span class="project-tech">HTML</span>
+                            <span class="project-tech">CSS</span>
+                            <span class="project-tech">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
 
-.submit-btn:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+                <!-- Проект 6 -->
+                <div class="project-card" data-tech="html css" onclick="openProjectModal('project6')">
+                    <img src="../images/blog.jpg" alt="Блог-страница" class="project-image" onerror="this.src='https://via.placeholder.com/400x200/ff9a9e/white?text=Блог'">
+                    <div class="project-content">
+                        <h3 class="project-title">Блог-страница</h3>
+                        <p class="project-description">Простая страница блога с статьями и комментариями</p>
+                        <div>
+                            <span class="project-tech">HTML</span>
+                            <span class="project-tech">CSS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-.contact-info {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+    <!-- Модальное окно для проекта 1 -->
+    <div id="project1-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project1-modal')">&times;</span>
+            <h2>Сайт-визитка</h2>
+            
+            <div class="gallery-container">
+                <img id="project1-main-img" src="../images/business card website.jpg" alt="Главное изображение проекта Сайт-визитка" class="main-gallery-image" onerror="this.src='https://via.placeholder.com/800x400/667eea/white?text=Сайт-визитка'">
+                <div class="gallery-thumbnails">
+                    <img src="../images/business card website.jpg" alt="Внешний вид сайта" class="gallery-thumbnail active" onclick="changeGalleryImage('project1', this, '../images/business card website.jpg')">
+                    <img src="../images/gallery.jpg" alt="Адаптивная версия" class="gallery-thumbnail" onclick="changeGalleryImage('project1', this, '../images/gallery.jpg')">
+                    <img src="../images/calculator.jpg" alt="Контактная секция" class="gallery-thumbnail" onclick="changeGalleryImage('project1', this, '../images/calculator.jpg')">
+                </div>
+            </div>
 
-.contact-info h2 {
-    margin-bottom: 1rem;
-    color: #2c3e50;
-}
+            <div class="project-details">
+                <p><strong>Описание:</strong> Простой адаптивный сайт-визитка с информацией о себе, навыками и контактными данными.</p>
+                <p><strong>Технологии:</strong> HTML, CSS</p>
+                <div class="project-features">
+                    <p><strong>Особенности:</strong></p>
+                    <ul>
+                        <li>Адаптивный дизайн для мобильных устройств</li>
+                        <li>Чистый и минималистичный интерфейс</li>
+                        <li>Секция с контактной информацией</li>
+                        <li>Простая навигация</li>
+                        <li>Оптимизированная загрузка</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-.contact-details p {
-    margin-bottom: 0.8rem;
-    font-size: 1.1rem;
-    color: #555;
-}
+    <!-- Модальное окно для проекта 2 -->
+    <div id="project2-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project2-modal')">&times;</span>
+            <h2>Галерея изображений</h2>
+            
+            <div class="gallery-container">
+                <img id="project2-main-img" src="../images/gallery.jpg" alt="Главное изображение галереи" class="main-gallery-image" onerror="this.src='https://via.placeholder.com/800x400/764ba2/white?text=Галерея'">
+                <div class="gallery-thumbnails">
+                    <img src="../images/gallery.jpg" alt="Главная страница" class="gallery-thumbnail active" onclick="changeGalleryImage('project2', this, '../images/gallery.jpg')">
+                    <img src="../images/business card website.jpg" alt="Фильтрация" class="gallery-thumbnail" onclick="changeGalleryImage('project2', this, '../images/business card website.jpg')">
+                    <img src="../images/calculator.jpg" alt="Модальный просмотр" class="gallery-thumbnail" onclick="changeGalleryImage('project2', this, '../images/calculator.jpg')">
+                </div>
+            </div>
 
-/* Стили для страницы дневника */
-.current-courses {
-    background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin: 2rem 0;
-}
+            <div class="project-details">
+                <p><strong>Описание:</strong> Интерактивная галерея изображений с возможностью фильтрации по категориям и просмотром в полном размере.</p>
+                <p><strong>Технологии:</strong> HTML, CSS, JavaScript</p>
+                <div class="project-features">
+                    <p><strong>Функциональность:</strong></p>
+                    <ul>
+                        <li>Фильтрация изображений по категориям</li>
+                        <li>Просмотр изображений в модальном окне</li>
+                        <li>Адаптивная сетка изображений</li>
+                        <li>Плавные анимации</li>
+                        <li>Оптимизация для разных устройств</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-.course-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background-color: #f8f9fa;
-    border-radius: 4px;
-}
+    <!-- Модальное окно для проекта 3 -->
+    <div id="project3-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project3-modal')">&times;</span>
+            <h2>Калькулятор</h2>
+            
+            <div class="gallery-container">
+                <img id="project3-main-img" src="../images/calculator.jpg" alt="Главное изображение калькулятора" class="main-gallery-image" onerror="this.src='https://via.placeholder.com/800x400/f093fb/white?text=Калькулятор'">
+                <div class="gallery-thumbnails">
+                    <img src="../images/calculator.jpg" alt="Основной интерфейс" class="gallery-thumbnail active" onclick="changeGalleryImage('project3', this, '../images/calculator.jpg')">
+                    <img src="../images/gallery.jpg" alt="Режим вычислений" class="gallery-thumbnail" onclick="changeGalleryImage('project3', this, '../images/gallery.jpg')">
+                    <img src="../images/to-do list.jpg" alt="Адаптивная версия" class="gallery-thumbnail" onclick="changeGalleryImage('project3', this, '../images/to-do list.jpg')">
+                </div>
+            </div>
 
-.course-name {
-    flex: 1;
-    font-weight: 500;
-    color: #2c3e50;
-}
+            <div class="project-details">
+                <p><strong>Описание:</strong> Простой калькулятор с основными математическими операциями.</p>
+                <p><strong>Технологии:</strong> HTML, CSS, JavaScript</p>
+                <div class="project-features">
+                    <p><strong>Возможности:</strong></p>
+                    <ul>
+                        <li>Сложение, вычитание, умножение, деление</li>
+                        <li>Красивый и интуитивный интерфейс</li>
+                        <li>Обработка ошибок (деление на ноль)</li>
+                        <li>Очистка и удаление последнего символа</li>
+                        <li>Адаптивный дизайн</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-.progress-bar {
-    flex: 2;
-    height: 8px;
-    background-color: #ecf0f1;
-    border-radius: 4px;
-    overflow: hidden;
-}
+    <!-- Модальное окно для проекта 4 -->
+    <div id="project4-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project4-modal')">&times;</span>
+            <h2>Адаптивный лендинг</h2>
+            
+            <div class="gallery-container">
+                <img id="project4-main-img" src="../images/adaptive landing page.jpg" alt="Главное изображение лендинга" class="main-gallery-image" onerror="this.src='https://via.placeholder.com/800x400/4facfe/white?text=Лендинг'">
+                <div class="gallery-thumbnails">
+                    <img src="../images/adaptive landing page.jpg" alt="Десктопная версия" class="gallery-thumbnail active" onclick="changeGalleryImage('project4', this, '../images/adaptive landing page.jpg')">
+                    <img src="../images/blog.jpg" alt="Мобильная версия" class="gallery-thumbnail" onclick="changeGalleryImage('project4', this, '../images/blog.jpg')">
+                    <img src="../images/gallery.jpg" alt="Различные секции" class="gallery-thumbnail" onclick="changeGalleryImage('project4', this, '../images/gallery.jpg')">
+                </div>
+            </div>
 
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(135deg, #3498db, #2980b9);
-    border-radius: 4px;
-    transition: width 0.5s ease;
-}
+            <div class="project-details">
+                <p><strong>Описание:</strong> Лендинг страница для продукта с использованием Bootstrap.</p>
+                <p><strong>Технологии:</strong> HTML, CSS, Bootstrap</p>
+                <div class="project-features">
+                    <p><strong>Особенности:</strong></p>
+                    <ul>
+                        <li>Полностью адаптивный дизайн</li>
+                        <li>Использование Bootstrap компонентов</li>
+                        <li>Современный и чистый дизайн</li>
+                        <li>Оптимизирован для мобильных устройств</li>
+                        <li>Быстрая загрузка страницы</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-.progress-percent {
-    flex: 0 0 50px;
-    text-align: right;
-    font-weight: bold;
-    color: #2c3e50;
-}
+    <!-- Модальное окно для проекта 5 -->
+    <div id="project5-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project5-modal')">&times;</span>
+            <h2>To-Do список</h2>
+            
+            <div class="gallery-container">
+                <img id="project5-main-img" src="../images/to-do list.jpg" alt="Главное изображение To-Do списка" class="main-gallery-image" onerror="this.src='https://via.placeholder.com/800x400/43e97b/white?text=To-Do'">
+                <div class="gallery-thumbnails">
+                    <img src="../images/to-do list.jpg" alt="Основной интерфейс" class="gallery-thumbnail active" onclick="changeGalleryImage('project5', this, '../images/to-do list.jpg')">
+                    <img src="../images/calculator.jpg" alt="Добавление задач" class="gallery-thumbnail" onclick="changeGalleryImage('project5', this, '../images/calculator.jpg')">
+                    <img src="../images/gallery.jpg" alt="Фильтрация задач" class="gallery-thumbnail" onclick="changeGalleryImage('project5', this, '../images/gallery.jpg')">
+                </div>
+            </div>
 
-.add-entry-btn {
-    background-color: #27ae60;
-    color: white;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: block;
-    margin: 0 auto;
-}
+            <div class="project-details">
+                <p><strong>Описание:</strong> Простое приложение для управления задачами.</p>
+                <p><strong>Технологии:</strong> HTML, CSS, JavaScript</p>
+                <div class="project-features">
+                    <p><strong>Функции:</strong></p>
+                    <ul>
+                        <li>Добавление новых задач</li>
+                        <li>Отметка выполненных задач</li>
+                        <li>Удаление задач</li>
+                        <li>Фильтрация задач</li>
+                        <li>Локальное сохранение данных</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-.add-entry-btn:hover {
-    background-color: #219a52;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+    <!-- Модальное окно для проекта 6 -->
+    <div id="project6-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('project6-modal')">&times;</span>
+            <h2>Блог-страница</h2>
+            
+            <div class="gallery-container">
+                <img id="project6-main-img" src="../images/blog.jpg" alt="Главное изображение блога" class="main-gallery-image" onerror="this.src='https://via.placeholder.com/800x400/ff9a9e/white?text=Блог'">
+                <div class="gallery-thumbnails">
+                    <img src="../images/blog.jpg" alt="Главная страница" class="gallery-thumbnail active" onclick="changeGalleryImage('project6', this, '../images/blog.jpg')">
+                    <img src="../images/adaptive landing page.jpg" alt="Страница статьи" class="gallery-thumbnail" onclick="changeGalleryImage('project6', this, '../images/adaptive landing page.jpg')">
+                    <img src="../images/business card website.jpg" alt="Комментарии" class="gallery-thumbnail" onclick="changeGalleryImage('project6', this, '../images/business card website.jpg')">
+                </div>
+            </div>
 
-.project-content {
-    text-align: center;
-}
+            <div class="project-details">
+                <p><strong>Описание:</strong> Простая страница блога с статьями и комментариями.</p>
+                <p><strong>Технологии:</strong> HTML, CSS</p>
+                <div class="project-features">
+                    <p><strong>Структура:</strong></p>
+                    <ul>
+                        <li>Главная страница со списком статей</li>
+                        <li>Страницы отдельных статей</li>
+                        <li>Секция комментариев</li>
+                        <li>Боковая панель с категориями</li>
+                        <li>Адаптивный дизайн</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-.project-content h3 {
-    margin-bottom: 0.5rem;
-    color: #ecf0f1;
-    font-size: 1.3rem;
-}
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2025 Ашхотов М.И. Все права защищены</p>
+        </div>
+    </footer>
 
-.project-content p {
-    color: #bdc3c7;
-    font-size: 1rem;
-}
+    <script>
+        // Функции для модальных окон
+        function openProjectModal(projectId) {
+            const modalId = `${projectId}-modal`;
+            document.getElementById(modalId).style.display = 'block';
+            
+            // Сброс галереи к первому изображению
+            const thumbnails = document.querySelectorAll(`#${modalId} .gallery-thumbnail`);
+            if (thumbnails.length > 0) {
+                thumbnails.forEach(thumb => thumb.classList.remove('active'));
+                thumbnails[0].classList.add('active');
+            }
+        }
 
-/* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
 
-    .contacts-page,
-    .diary-page,
-    .projects-page {
-        width: 100%;
-        padding: 1rem;
-    }
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
 
-    .projects-header {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-        margin-bottom: 20px;
-    }
+        // Функция смены изображения в галерее
+        function changeGalleryImage(projectId, element, imageUrl) {
+            // Обновляем активный класс
+            const thumbnails = element.parentElement.querySelectorAll('.gallery-thumbnail');
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            element.classList.add('active');
+            
+            // Меняем основное изображение
+            const mainImg = document.getElementById(`${projectId}-main-img`);
+            if (mainImg) {
+                mainImg.src = imageUrl;
+            }
+        }
 
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
+        // Функция фильтрации проектов
+        function filterProjects(tech) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
 
-    .course-item {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0.5rem;
-    }
+            const projects = document.querySelectorAll('.project-card');
+            
+            projects.forEach(project => {
+                if (tech === 'all' || project.dataset.tech.includes(tech)) {
+                    project.style.display = 'block';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
 
-    .progress-bar {
-        flex: none;
-        height: 12px;
-    }
-}
+        // Закрытие модального окна при клике вне его
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = 'none';
+                }
+            }
+        }
 
-@media (pointer: coarse) {
+        // Закрытие по ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.getElementsByClassName('modal');
+                for (let i = 0; i < modals.length; i++) {
+                    modals[i].style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
 
-    button,
-    .nav__link {
-        min-height: 44px;
-        padding: .75rem 1rem;
-    }
-}
-
-@media (prefers-contrast: more) {
-
-    .button,
-    .filter {
-        box-shadow: inset 0 0 0 2px #fff;
-    }
-}
-
-/* Уважение к снижению движения */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation: none !important;
-        transition: none !important;
-    }
-}
+</html>

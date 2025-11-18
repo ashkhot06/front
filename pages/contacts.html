@@ -6,6 +6,194 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакты</title>
     <link rel="stylesheet" href="../styles/styles.css">
+    <style>
+        /* Основные стили структуры */
+        .page-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px 0;
+        }
+
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .StudentName {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 0;
+        }
+
+        .nav__list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav__link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav__link:hover,
+        .nav__link[aria-current="page"] {
+            color: #667eea;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 2rem;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer p {
+            margin: 0;
+            color: #666;
+        }
+
+        /* Стили для страницы контактов */
+        .contacts-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .contacts-page h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group input.error,
+        .form-group textarea.error {
+            border-color: #e53e3e;
+            box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.1);
+        }
+
+        .form-group input.success,
+        .form-group textarea.success {
+            border-color: #38a169;
+            box-shadow: 0 0 0 2px rgba(56, 161, 105, 0.1);
+        }
+
+        .error-message {
+            color: #e53e3e;
+            font-size: 0.875rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-message {
+            color: #38a169;
+            font-size: 1rem;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .submit-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            background: #5a6fd8;
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:disabled {
+            background: #a0aec0;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 8px;
+        }
+
+        .contact-details p {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+    </style>
 </head>
 
 <body class="page-container">
@@ -35,20 +223,24 @@
             <h1>Свяжитесь со мной</h1>
 
             <div class="contact-form">
-                <form class="form">
+                <form class="form" id="contact-form" novalidate>
                     <div class="form-group">
                         <label for="name">Имя:</label>
-                        <input type="text" id="name" name="name" placeholder="Введите ваше имя">
+                        <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
+                        <div class="error-message" id="name-error">Пожалуйста, введите ваше имя</div>
                     </div>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" placeholder="Введите ваш email">
+                        <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
+                        <div class="error-message" id="email-error">Пожалуйста, введите корректный email адрес</div>
                     </div>
                     <div class="form-group">
                         <label for="message">Сообщение:</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Введите ваше сообщение"></textarea>
+                        <textarea id="message" name="message" rows="4" placeholder="Введите ваше сообщение" required minlength="10"></textarea>
+                        <div class="error-message" id="message-error">Сообщение должно содержать не менее 10 символов</div>
                     </div>
-                    <button type="submit" class="submit-btn" aria-label="Отправить сообщение">Отправить сообщение</button>
+                    <button type="submit" class="submit-btn" id="submit-btn" aria-label="Отправить сообщение">Отправить сообщение</button>
+                    <div class="success-message" id="success-message">Сообщение успешно отправлено! Я свяжусь с вами в ближайшее время.</div>
                 </form>
             </div>
 
@@ -68,10 +260,132 @@
             <p>© 2025 Ашхотов М.И. Все права защищены</p>
         </div>
     </footer>
-    <script src="../scripts/main.js"></script>
-    <script src="../scripts/filters.js"></script>
-    <script src="../scripts/form-validation.js"></script>
-    <script src="../scripts/modal.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            const submitBtn = document.getElementById('submit-btn');
+            const successMessage = document.getElementById('success-message');
+
+            // Валидация в реальном времени
+            nameInput.addEventListener('input', validateName);
+            emailInput.addEventListener('input', validateEmail);
+            messageInput.addEventListener('input', validateMessage);
+
+            // Обработка отправки формы
+            form.addEventListener('submit', handleFormSubmit);
+
+            function validateName() {
+                const value = nameInput.value.trim();
+                const errorElement = document.getElementById('name-error');
+                
+                if (value === '') {
+                    showError(nameInput, errorElement, 'Пожалуйста, введите ваше имя');
+                    return false;
+                } else if (value.length < 2) {
+                    showError(nameInput, errorElement, 'Имя должно содержать не менее 2 символов');
+                    return false;
+                } else {
+                    showSuccess(nameInput, errorElement);
+                    return true;
+                }
+            }
+
+            function validateEmail() {
+                const value = emailInput.value.trim();
+                const errorElement = document.getElementById('email-error');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (value === '') {
+                    showError(emailInput, errorElement, 'Пожалуйста, введите ваш email');
+                    return false;
+                } else if (!emailRegex.test(value)) {
+                    showError(emailInput, errorElement, 'Пожалуйста, введите корректный email адрес');
+                    return false;
+                } else {
+                    showSuccess(emailInput, errorElement);
+                    return true;
+                }
+            }
+
+            function validateMessage() {
+                const value = messageInput.value.trim();
+                const errorElement = document.getElementById('message-error');
+                
+                if (value === '') {
+                    showError(messageInput, errorElement, 'Пожалуйста, введите сообщение');
+                    return false;
+                } else if (value.length < 10) {
+                    showError(messageInput, errorElement, 'Сообщение должно содержать не менее 10 символов');
+                    return false;
+                } else {
+                    showSuccess(messageInput, errorElement);
+                    return true;
+                }
+            }
+
+            function showError(input, errorElement, message) {
+                input.classList.remove('success');
+                input.classList.add('error');
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+
+            function showSuccess(input, errorElement) {
+                input.classList.remove('error');
+                input.classList.add('success');
+                errorElement.style.display = 'none';
+            }
+
+            function handleFormSubmit(event) {
+                event.preventDefault();
+                
+                const isNameValid = validateName();
+                const isEmailValid = validateEmail();
+                const isMessageValid = validateMessage();
+                
+                if (isNameValid && isEmailValid && isMessageValid) {
+                    // Симуляция отправки формы
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Отправка...';
+                    
+                    setTimeout(() => {
+                        successMessage.style.display = 'block';
+                        form.reset();
+                        
+                        // Сброс классов полей
+                        [nameInput, emailInput, messageInput].forEach(input => {
+                            input.classList.remove('success', 'error');
+                        });
+                        
+                        // Восстановление кнопки
+                        setTimeout(() => {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = 'Отправить сообщение';
+                            successMessage.style.display = 'none';
+                        }, 3000);
+                    }, 1500);
+                } else {
+                    // Прокрутка к первой ошибке
+                    const firstError = form.querySelector('.error');
+                    if (firstError) {
+                        firstError.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'center' 
+                        });
+                    }
+                }
+            }
+
+            // Валидация при потере фокуса
+            nameInput.addEventListener('blur', validateName);
+            emailInput.addEventListener('blur', validateEmail);
+            messageInput.addEventListener('blur', validateMessage);
+        });
+    </script>
 </body>
 
 </html>

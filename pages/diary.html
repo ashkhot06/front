@@ -6,6 +6,270 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Дневник</title>
     <link rel="stylesheet" href="../styles/styles.css">
+    <style>
+        /* Основные стили структуры */
+        .page-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px 0;
+        }
+
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .StudentName {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 0;
+        }
+
+        .nav__list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav__link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav__link:hover,
+        .nav__link[aria-current="page"] {
+            color: #667eea;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 2rem;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer p {
+            margin: 0;
+            color: #666;
+        }
+
+        /* Стили для страницы дневника */
+        .diary-page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .diary-page h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .progress-list {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .progress-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .progress-item:last-child {
+            border-bottom: none;
+        }
+
+        .date {
+            font-weight: 600;
+            color: #667eea;
+            min-width: 100px;
+        }
+
+        .task {
+            color: #333;
+        }
+
+        .current-courses {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .current-courses h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .course-progress {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .course-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .course-name {
+            min-width: 150px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #667eea;
+            border-radius: 5px;
+        }
+
+        .progress-percent {
+            min-width: 40px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .add-entry-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .add-entry-btn:hover {
+            background: #5a6fd8;
+        }
+
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .close:hover {
+            color: #667eea;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #5a6fd8;
+        }
+    </style>
 </head>
 
 <body class="page-container">
@@ -80,19 +344,126 @@
                 </div>
             </div>
 
-            <button class="add-entry-btn" aria-label="Добавить новую запись">Добавить запись</button>
+            <button class="add-entry-btn" onclick="openAddEntryModal()" aria-label="Добавить новую запись">Добавить запись</button>
         </section>
     </main>
+
+    <!-- Модальное окно для добавления записи -->
+    <div id="add-entry-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('add-entry-modal')">&times;</span>
+            <h2>Добавить новую запись</h2>
+            <form id="entry-form" onsubmit="handleEntrySubmit(event)">
+                <div class="form-group">
+                    <label for="entry-date">Дата:</label>
+                    <input type="date" id="entry-date" name="entry-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="entry-task">Задача:</label>
+                    <input type="text" id="entry-task" name="entry-task" placeholder="Опишите выполненную задачу" required>
+                </div>
+                <div class="form-group">
+                    <label for="entry-status">Статус:</label>
+                    <select id="entry-status" name="entry-status" required>
+                        <option value="completed">✓ Выполнено</option>
+                        <option value="in-progress">⏳ В процессе</option>
+                        <option value="planned">📅 Запланировано</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="entry-notes">Заметки:</label>
+                    <textarea id="entry-notes" name="entry-notes" placeholder="Дополнительные заметки..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Добавить запись</button>
+            </form>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer-content">
             <p>© 2025 Ашхотов М.И. Все права защищены</p>
         </div>
     </footer>
-    <script src="../scripts/main.js"></script>
-    <script src="../scripts/filters.js"></script>
-    <script src="../scripts/form-validation.js"></script>
-    <script src="../scripts/modal.js"></script>
+
+    <script>
+        // Функции для модального окна
+        function openAddEntryModal() {
+            document.getElementById('add-entry-modal').style.display = 'block';
+            // Устанавливаем сегодняшнюю дату по умолчанию
+            document.getElementById('entry-date').valueAsDate = new Date();
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function handleEntrySubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const date = formData.get('entry-date');
+            const task = formData.get('entry-task');
+            const status = formData.get('entry-status');
+            const notes = formData.get('entry-notes');
+
+            // Создаем новую запись
+            addNewEntry(date, task, status, notes);
+            
+            // Закрываем модальное окно
+            closeModal('add-entry-modal');
+            
+            // Очищаем форму
+            event.target.reset();
+            
+            // Показываем уведомление
+            alert('Запись успешно добавлена!');
+        }
+
+        function addNewEntry(date, task, status, notes) {
+            const progressList = document.querySelector('.progress-list');
+            const newEntry = document.createElement('div');
+            newEntry.className = 'progress-item';
+            
+            // Форматируем дату
+            const formattedDate = new Date(date).toLocaleDateString('ru-RU', {
+                day: 'numeric',
+                month: 'short'
+            });
+            
+            // Выбираем символ статуса
+            let statusSymbol = '✓';
+            if (status === 'in-progress') statusSymbol = '⏳';
+            if (status === 'planned') statusSymbol = '📅';
+            
+            newEntry.innerHTML = `
+                <span class="date">${formattedDate} - </span>
+                <span class="task">${task} ${statusSymbol}</span>
+            `;
+            
+            // Добавляем в начало списка
+            progressList.insertBefore(newEntry, progressList.firstChild);
+        }
+
+        // Закрытие модального окна при клике вне его
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = 'none';
+                }
+            }
+        }
+
+        // Закрытие по ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.getElementsByClassName('modal');
+                for (let i = 0; i < modals.length; i++) {
+                    modals[i].style.display = 'none';
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
