@@ -583,8 +583,8 @@
             }
         }
 
-        // Закрытие по ESC
-        document.addEventListener('keydown', function(event) {
+// Закрытие по ESC
+document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 const modals = document.getElementsByClassName('modal');
                 for (let i = 0; i < modals.length; i++) {
@@ -592,7 +592,47 @@
                 }
             }
         });
-    </script>
-</body>
+</script >
+</body >
 
-</html>
+</html >
+/* Адаптивные изображения */
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Picture element поддержка */
+picture {
+    display: block;
+    width: 100%;
+}
+
+/* Retina поддержка */
+.retina-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Object-fit fallback для старых браузеров */
+.object-fit-cover {
+    object-fit: cover;
+    font-family: 'object-fit: cover;'; /* Полифилл */
+}
+
+/* Адаптивная галерея */
+@media (max-width: 768px) {
+    .project-list,
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-list,
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}

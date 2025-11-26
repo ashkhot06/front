@@ -57,10 +57,10 @@
             transition: color 0.3s ease;
         }
 
-        .nav__link:hover,
-        .nav__link[aria-current="page"] {
-            color: #667eea;
-        }
+            .nav__link:hover,
+            .nav__link[aria-current="page"] {
+                color: #667eea;
+            }
 
         .footer {
             background: #f8f9fa;
@@ -86,105 +86,12 @@
             padding: 2rem;
         }
 
-        .contacts-page h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 2rem;
-            font-size: 2rem;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
-        }
-
-        .form-group input.error,
-        .form-group textarea.error {
-            border-color: #e53e3e;
-            box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.1);
-        }
-
-        .form-group input.success,
-        .form-group textarea.success {
-            border-color: #38a169;
-            box-shadow: 0 0 0 2px rgba(56, 161, 105, 0.1);
-        }
-
-        .error-message {
-            color: #e53e3e;
-            font-size: 0.875rem;
-            margin-top: 5px;
-            display: none;
-        }
-
-        .success-message {
-            color: #38a169;
-            font-size: 1rem;
-            margin-top: 15px;
-            padding: 10px;
-            background-color: #f0fff4;
-            border: 1px solid #9ae6b4;
-            border-radius: 5px;
-            display: none;
-        }
-
-        .submit-btn {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .submit-btn:hover:not(:disabled) {
-            background: #5a6fd8;
-            transform: translateY(-1px);
-        }
-
-        .submit-btn:disabled {
-            background: #a0aec0;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .contact-info {
-            margin-top: 40px;
-            padding: 20px;
-            background: #f7fafc;
-            border-radius: 8px;
-        }
-
-        .contact-details p {
-            margin: 10px 0;
-            font-size: 1.1rem;
-        }
+            .contacts-page h1 {
+                text-align: center;
+                color: #333;
+                margin-bottom: 2rem;
+                font-size: 2rem;
+            }
 
         .contact-form {
             background: white;
@@ -193,12 +100,214 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             margin-bottom: 2rem;
         }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: 600;
+                color: #333;
+                font-size: 1rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #e9ecef;
+                border-radius: 8px;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+                background: #fff;
+            }
+
+                .form-group input:focus,
+                .form-group textarea:focus {
+                    outline: none;
+                    border-color: #667eea;
+                    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+                    background: #fff;
+                }
+
+                .form-group input.error,
+                .form-group textarea.error {
+                    border-color: #e53e3e;
+                    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
+                }
+
+                .form-group input.success,
+                .form-group textarea.success {
+                    border-color: #38a169;
+                    box-shadow: 0 0 0 3px rgba(56, 161, 105, 0.1);
+                }
+
+        .error-message {
+            color: #e53e3e;
+            font-size: 0.875rem;
+            margin-top: 8px;
+            display: none;
+            font-weight: 500;
+        }
+
+        .success-message {
+            color: #38a169;
+            font-size: 1rem;
+            margin-top: 15px;
+            padding: 12px 16px;
+            background-color: #f0fff4;
+            border: 1px solid #9ae6b4;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .submit-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+            .submit-btn:hover:not(:disabled) {
+                background: #5a6fd8;
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            }
+
+            .submit-btn:disabled {
+                background: #a0aec0;
+                cursor: not-allowed;
+                transform: none;
+                box-shadow: none;
+            }
+
+        .contact-info {
+            margin-top: 40px;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+            .contact-info h2 {
+                color: #333;
+                margin-bottom: 1.5rem;
+                font-size: 1.5rem;
+            }
+
+        .contact-details p {
+            margin: 12px 0;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .contact-details a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+            .contact-details a:hover {
+                color: #5a6fd8;
+                text-decoration: underline;
+            }
+
+        /* Стили для fieldset и legend */
+        fieldset {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            background: #f8fafc;
+        }
+
+        legend {
+            font-weight: 600;
+            color: #333;
+            padding: 0 12px;
+            font-size: 1.1rem;
+        }
+
+        .required {
+            color: #e53e3e;
+            font-weight: bold;
+        }
+
+        .help-text {
+            color: #666;
+            font-size: 0.875rem;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
+        /* Стили для доступности */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .contacts-page {
+                padding: 1rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .header {
+                padding: 1rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav__list {
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            fieldset {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contacts-page h1 {
+                font-size: 1.5rem;
+            }
+
+            .contact-info h2 {
+                font-size: 1.3rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 
 <body class="page-container">
-    <header class="header">
-        <img class="logo" src="../images/logo.webp" alt="логотип">
+    <header class="header" role="banner">
+        <img class="logo" src="../images/logo.webp" alt="Логотип студента Ашхотова Мурата">
         <h1 class="StudentName">Ашхотов Мурат Иналович</h1>
         <nav aria-label="Основное меню">
             <ul class="nav__list">
@@ -218,51 +327,111 @@
         </nav>
     </header>
 
-    <main class="content">
+    <main class="content" role="main">
         <section class="contacts-page">
             <h1>Свяжитесь со мной</h1>
 
             <div class="contact-form">
-                <form class="form" id="contact-form" novalidate>
-                    <div class="form-group">
-                        <label for="name">Имя:</label>
-                        <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
-                        <div class="error-message" id="name-error">Пожалуйста, введите ваше имя</div>
+                <form class="form" id="contact-form" novalidate aria-labelledby="form-title">
+                    <h2 id="form-title" class="visually-hidden">Форма обратной связи</h2>
+
+                    <fieldset>
+                        <legend>Контактная информация</legend>
+
+                        <div class="form-group">
+                            <label for="name">
+                                Имя <span class="required" aria-hidden="true">*</span>
+                                <span class="visually-hidden">Обязательное поле</span>
+                            </label>
+                            <input type="text"
+                                   id="name"
+                                   name="name"
+                                   required
+                                   aria-required="true"
+                                   aria-describedby="name-help name-error"
+                                   placeholder="Введите ваше имя">
+                            <div id="name-help" class="help-text">Ваше полное имя</div>
+                            <div class="error-message" id="name-error" role="alert"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">
+                                Email <span class="required" aria-hidden="true">*</span>
+                                <span class="visually-hidden">Обязательное поле</span>
+                            </label>
+                            <input type="email"
+                                   id="email"
+                                   name="email"
+                                   required
+                                   aria-required="true"
+                                   aria-describedby="email-help email-error"
+                                   placeholder="Введите ваш email">
+                            <div id="email-help" class="help-text">Мы отправим ответ на этот адрес</div>
+                            <div class="error-message" id="email-error" role="alert"></div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Ваше сообщение</legend>
+
+                        <div class="form-group">
+                            <label for="message">
+                                Сообщение <span class="required" aria-hidden="true">*</span>
+                                <span class="visually-hidden">Обязательное поле</span>
+                            </label>
+                            <textarea id="message"
+                                      name="message"
+                                      rows="5"
+                                      required
+                                      aria-required="true"
+                                      aria-describedby="message-help message-error"
+                                      placeholder="Введите ваше сообщение"
+                                      minlength="10"></textarea>
+                            <div id="message-help" class="help-text">Сообщение должно содержать не менее 10 символов</div>
+                            <div class="error-message" id="message-error" role="alert"></div>
+                        </div>
+                    </fieldset>
+
+                    <button type="submit"
+                            class="submit-btn"
+                            id="submit-btn"
+                            aria-label="Отправить форму обратной связи">
+                        Отправить сообщение
+                    </button>
+
+                    <div class="success-message"
+                         id="success-message"
+                         role="status"
+                         aria-live="polite"
+                         aria-atomic="true"
+                         style="display: none;">
+                        Сообщение успешно отправлено! Я свяжусь с вами в ближайшее время.
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
-                        <div class="error-message" id="email-error">Пожалуйста, введите корректный email адрес</div>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Сообщение:</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Введите ваше сообщение" required minlength="10"></textarea>
-                        <div class="error-message" id="message-error">Сообщение должно содержать не менее 10 символов</div>
-                    </div>
-                    <button type="submit" class="submit-btn" id="submit-btn" aria-label="Отправить сообщение">Отправить сообщение</button>
-                    <div class="success-message" id="success-message">Сообщение успешно отправлено! Я свяжусь с вами в ближайшее время.</div>
                 </form>
             </div>
 
             <div class="contact-info">
-                <h2>Контакты:</h2>
+                <h2>Контакты</h2>
                 <div class="contact-details">
-                    <p>📧 ashkhotov.m@gmail.com</p>
-                    <p>📱 GitHub: ashkhotov06</p>
+                    <p>📧 <a href="mailto:ashkhotov.m@gmail.com">ashkhotov.m@gmail.com</a></p>
+                    <p>📱 GitHub: <a href="https://github.com/ashkhotov06" target="_blank">ashkhotov06</a></p>
                     <p>📍 Нальчик, Россия</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="footer-content">
             <p>© 2025 Ашхотов М.И. Все права защищены</p>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        // ПРОСТАЯ РАБОЧАЯ ФОРМА
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('🚀 Contacts page loaded');
+
             const form = document.getElementById('contact-form');
             const nameInput = document.getElementById('name');
             const emailInput = document.getElementById('email');
@@ -270,120 +439,119 @@
             const submitBtn = document.getElementById('submit-btn');
             const successMessage = document.getElementById('success-message');
 
-            // Валидация в реальном времени
-            nameInput.addEventListener('input', validateName);
-            emailInput.addEventListener('input', validateEmail);
-            messageInput.addEventListener('input', validateMessage);
+            // 1. ОБРАБОТКА ОТПРАВКИ ФОРМЫ
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                console.log('📤 Форма отправляется...');
 
-            // Обработка отправки формы
-            form.addEventListener('submit', handleFormSubmit);
+                let hasErrors = false;
 
-            function validateName() {
-                const value = nameInput.value.trim();
-                const errorElement = document.getElementById('name-error');
-                
-                if (value === '') {
-                    showError(nameInput, errorElement, 'Пожалуйста, введите ваше имя');
-                    return false;
-                } else if (value.length < 2) {
-                    showError(nameInput, errorElement, 'Имя должно содержать не менее 2 символов');
-                    return false;
+                // Проверка имени
+                if (!nameInput.value.trim()) {
+                    showError(nameInput, 'name-error', 'Введите ваше имя');
+                    hasErrors = true;
                 } else {
-                    showSuccess(nameInput, errorElement);
-                    return true;
+                    hideError('name-error');
                 }
-            }
 
-            function validateEmail() {
-                const value = emailInput.value.trim();
-                const errorElement = document.getElementById('email-error');
+                // Проверка email
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                
-                if (value === '') {
-                    showError(emailInput, errorElement, 'Пожалуйста, введите ваш email');
-                    return false;
-                } else if (!emailRegex.test(value)) {
-                    showError(emailInput, errorElement, 'Пожалуйста, введите корректный email адрес');
-                    return false;
+                if (!emailInput.value.trim()) {
+                    showError(emailInput, 'email-error', 'Введите ваш email');
+                    hasErrors = true;
+                } else if (!emailRegex.test(emailInput.value)) {
+                    showError(emailInput, 'email-error', 'Введите корректный email');
+                    hasErrors = true;
                 } else {
-                    showSuccess(emailInput, errorElement);
-                    return true;
+                    hideError('email-error');
                 }
-            }
 
-            function validateMessage() {
-                const value = messageInput.value.trim();
-                const errorElement = document.getElementById('message-error');
-                
-                if (value === '') {
-                    showError(messageInput, errorElement, 'Пожалуйста, введите сообщение');
-                    return false;
-                } else if (value.length < 10) {
-                    showError(messageInput, errorElement, 'Сообщение должно содержать не менее 10 символов');
-                    return false;
+                // Проверка сообщения
+                if (!messageInput.value.trim()) {
+                    showError(messageInput, 'message-error', 'Введите сообщение');
+                    hasErrors = true;
+                } else if (messageInput.value.trim().length < 10) {
+                    showError(messageInput, 'message-error', 'Сообщение должно быть не менее 10 символов');
+                    hasErrors = true;
                 } else {
-                    showSuccess(messageInput, errorElement);
-                    return true;
+                    hideError('message-error');
                 }
-            }
 
-            function showError(input, errorElement, message) {
-                input.classList.remove('success');
+                if (!hasErrors) {
+                    // ВСЕ ПРАВИЛЬНО - отправляем форму
+                    submitForm();
+                }
+            });
+
+            // 2. ФУНКЦИЯ ПОКАЗАТЬ ОШИБКУ
+            function showError(input, errorId, message) {
+                const errorElement = document.getElementById(errorId);
+                // Добавляем красную рамку
                 input.classList.add('error');
+                input.classList.remove('success');
+                // Показываем текст ошибки
                 errorElement.textContent = message;
                 errorElement.style.display = 'block';
+                console.log('❌ Ошибка:', message);
             }
 
-            function showSuccess(input, errorElement) {
-                input.classList.remove('error');
-                input.classList.add('success');
+            // 3. ФУНКЦИЯ СКРЫТЬ ОШИБКУ
+            function hideError(errorId) {
+                const errorElement = document.getElementById(errorId);
                 errorElement.style.display = 'none';
             }
 
-            function handleFormSubmit(event) {
-                event.preventDefault();
-                
-                const isNameValid = validateName();
-                const isEmailValid = validateEmail();
-                const isMessageValid = validateMessage();
-                
-                if (isNameValid && isEmailValid && isMessageValid) {
-                    // Симуляция отправки формы
-                    submitBtn.disabled = true;
-                    submitBtn.textContent = 'Отправка...';
-                    
+            // 4. ФУНКЦИЯ ОТПРАВКИ ФОРМЫ
+            function submitForm() {
+                console.log('✅ Форма валидна - отправляем');
+
+                // Меняем кнопку на "Отправка..."
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Отправка...';
+
+                // Ждем 2 секунды (симуляция отправки)
+                setTimeout(() => {
+                    // ПОКАЗЫВАЕМ УСПЕШНОЕ СООБЩЕНИЕ
+                    successMessage.style.display = 'block';
+                    console.log('📩 Сообщение отправлено!');
+
+                    // Через 3 секунды очищаем форму
                     setTimeout(() => {
-                        successMessage.style.display = 'block';
                         form.reset();
-                        
-                        // Сброс классов полей
-                        [nameInput, emailInput, messageInput].forEach(input => {
-                            input.classList.remove('success', 'error');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Отправить сообщение';
+                        successMessage.style.display = 'none';
+
+                        // Убираем все стили ошибок
+                        document.querySelectorAll('.error').forEach(el => {
+                            el.classList.remove('error');
                         });
-                        
-                        // Восстановление кнопки
-                        setTimeout(() => {
-                            submitBtn.disabled = false;
-                            submitBtn.textContent = 'Отправить сообщение';
-                            successMessage.style.display = 'none';
-                        }, 3000);
-                    }, 1500);
-                } else {
-                    // Прокрутка к первой ошибке
-                    const firstError = form.querySelector('.error');
-                    if (firstError) {
-                        firstError.scrollIntoView({ 
-                            behavior: 'smooth', 
-                            block: 'center' 
+                        document.querySelectorAll('.error-message').forEach(el => {
+                            el.style.display = 'none';
                         });
-                    }
-                }
+
+                        console.log('🔄 Форма очищена');
+                    }, 3000);
+                }, 2000);
             }
 
-            // Валидация при потере фокуса
-            nameInput.addEventListener('blur', validateName);
-            emailInput.addEventListener('blur', validateEmail);
-            messageInput.addEventListener('blur', validateMessage);
+            // 5. КЛАВИША ESCAPE - сброс формы
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') {
+                    console.log('⎋ Нажата Escape - сбрасываем форму');
+                    form.reset();
+                    // Скрываем все ошибки
+                    document.querySelectorAll('.error-message').forEach(el => {
+                        el.style.display = 'none';
+                    });
+                    // Убираем красные рамки
+                    document.querySelectorAll('.error').forEach(el => {
+                        el.classList.remove('error');
+                    });
+                }
+            });
+
+            console.log('🎯 Форма готова к работе!');
         });
     </script>
 </body>
