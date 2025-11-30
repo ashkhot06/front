@@ -235,9 +235,22 @@
             color: #666;
         }
     </style>
+    <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ваш сайт</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="accessibility.css">
+</head>
 </head>
 
 <body class="page-container">
+    <!-- Skip link для клавиатурной навигации -->
+<a href="#main-content" class="skip-link">
+    Перейти к основному содержанию
+</a>
     <header class="header">
        <img class="logo" src="../images/logo.webp" alt="логотип">
         <h1 class="StudentName">Ашхотов Мурат Иналович</h1>
@@ -259,7 +272,7 @@
         </nav>
     </header>
 
-    <main class="content">
+    <main class="content" id="main-content">
         <section class="projects-page">
             <div class="projects-header">
                 <h2>Мои проекты</h2>

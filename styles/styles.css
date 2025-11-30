@@ -636,3 +636,68 @@ picture {
         grid-template-columns: 1fr;
     }
 }
+/* Skip link для доступности */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #667eea;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    z-index: 10000;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 6px;
+    outline: 3px solid #0056b3;
+    outline-offset: 2px;
+}
+
+/* Для печати */
+@media print {
+    .skip-link {
+        display: none;
+    }
+}
+/* Исправление для навигации */
+.nav_link {
+    color: #000000; /* Черный текст */
+    background-color: transparent;
+}
+
+.nav_link.active {
+    color: #000000;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Исправление для шапки */
+.header {
+    background-color: #f8f9fa; /* Светлый фон */
+    color: #000000; /* Черный текст */
+}
+
+/* Исправление для кнопки скачивания */
+.download-btn {
+    background-color: #0056b3; /* Темно-синий фон */
+    color: #ffffff; /* Белый текст */
+    border: 2px solid #003d82;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.download-btn:hover {
+    background-color: #003d82;
+}
+/* Если имя пользователя отдельный элемент */
+.user-name {
+    color: #000000;
+    font-weight: bold;
+    font-size: 1.2em;
+}
